@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bill" pageWidth="230" pageHeight="792" columnWidth="205" leftMargin="11" rightMargin="14" topMargin="14" bottomMargin="14" isIgnorePagination="true" uuid="a298d608-f865-4485-afbf-bfa81215c529">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Episkey LIVE DB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="622"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="366"/>
+	<parameter name="userName" class="java.lang.String"/>
+	<parameter name="InvoiceId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT accio_inventory.invoice.id,
+	accio_inventory.invoice.discount_amount AS invoice_discount,
+	accio_inventory.invoice.gross_amount AS invoice_gross,
+	accio_inventory.invoice.invoice_number,
+	accio_inventory.invoice.net_amount AS invoice_net,
+	accio_inventory.invoice.pay_amount AS invoice_pay,
+	accio_inventory.invoice.balance_amount AS invoice_balance,
+	accio_inventory.invoice.created_by,
+	accio_inventory.invoice_item.discount_amount AS item_discount,
+	accio_inventory.invoice_item.gross_amount AS item_gross,
+	accio_inventory.invoice_item.net_amount AS item_net,
+	accio_inventory.invoice_item.qty,
+	accio_inventory.invoice.created_at,
+	accio_inventory.invoice_item.selling_price AS item_selling_price,
+	accio_inventory.item.code AS item_code,
+	accio_inventory.item.name AS item_name
+FROM accio_inventory.invoice_item
+	INNER JOIN accio_inventory.invoice ON 
+	 accio_inventory.invoice_item.invoice_id = accio_inventory.invoice.id 
+	INNER JOIN accio_inventory.item ON 
+	 accio_inventory.invoice_item.item_id = accio_inventory.item.id 
+WHERE 
+	 accio_inventory.invoice.id = $P{InvoiceId}]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice"/>
+	</field>
+	<field name="invoice_discount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="invoice_discount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice"/>
+	</field>
+	<field name="invoice_gross" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="invoice_gross"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice"/>
+	</field>
+	<field name="invoice_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="invoice_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice"/>
+	</field>
+	<field name="invoice_net" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="invoice_net"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice"/>
+	</field>
+	<field name="invoice_pay" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="invoice_pay"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice"/>
+	</field>
+	<field name="invoice_balance" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="invoice_balance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice"/>
+	</field>
+	<field name="created_by" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="created_by"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice"/>
+	</field>
+	<field name="item_discount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="item_discount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice_item"/>
+	</field>
+	<field name="item_gross" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="item_gross"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice_item"/>
+	</field>
+	<field name="item_net" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="item_net"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice_item"/>
+	</field>
+	<field name="qty" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice_item"/>
+	</field>
+	<field name="created_at" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice"/>
+	</field>
+	<field name="item_selling_price" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="item_selling_price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="invoice_item"/>
+	</field>
+	<field name="item_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="item_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+	</field>
+	<field name="item_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="item_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+	</field>
+	<variable name="LN" class="java.lang.Integer">
+		<variableExpression><![CDATA[new Integer($V{LN}.intValue() + 1)]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="invoice_gross1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{invoice_gross}]]></variableExpression>
+	</variable>
+	<variable name="invoice_discount1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{invoice_discount}]]></variableExpression>
+	</variable>
+	<variable name="invoice_net1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{invoice_net}]]></variableExpression>
+	</variable>
+	<variable name="invoice_balance1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{invoice_balance}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="202" height="14" uuid="d10fb6f3-2746-4598-9933-a39cd66259fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[INDIKA PHARMACY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="19" width="202" height="11" isRemoveLineWhenBlank="true" uuid="24c52e91-6560-46a7-8f65-7dd7ef836301"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Main street,Embilipitiya.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="42" width="202" height="12" uuid="7eef626c-e11e-496f-a7cf-78296dca5c2c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Email: indikapharmacyemb@gmail.com]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="54" width="62" height="12" uuid="2bc8b99a-b1f4-4477-bc78-d59b1f32557c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{userName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="80" width="202" height="1" uuid="cab37786-5e7f-45af-9e9c-acfd1490d68d"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="202" height="1" uuid="103430ee-e76a-4352-af5d-a951c7a31493"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="16" width="202" height="1" uuid="4a18a0af-2a8a-4c00-a161-1ec3793bfe8f"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="30" width="202" height="11" isRemoveLineWhenBlank="true" uuid="88e57bbc-f1bf-49df-aa00-54933816bb4c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tel: 0472230022]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="96" y="54" width="44" height="12" uuid="f3654578-720d-47a4-8cdf-410bd1c62db2"/>
+				<textElement textAlignment="Left">
+					<font fontName="Courier New" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Cashier:]]></text>
+			</staticText>
+			<textField pattern="M/d/yy h:mm a">
+				<reportElement x="1" y="55" width="94" height="11" uuid="b8a33ff9-6d41-4828-b495-eb96f5b2c660"/>
+				<textElement>
+					<font fontName="Courier New" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="67" width="201" height="12" uuid="6576f1fb-7505-4b1a-be1d-af365d4a2cae"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier New" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoice_number}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="13" height="12" uuid="a2672ce5-79c9-40dc-a0a0-9f1aa3645619"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ln]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="0" width="58" height="12" uuid="2776ebd8-2080-4503-a2c5-85ea7f9fbf22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P.Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="0" width="119" height="12" uuid="e1791fd1-c157-4a57-be7f-412215bd2e9c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="13" width="19" height="12" uuid="559421a6-c27f-4393-ba28-3b6f20e8d001"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="13" width="35" height="12" uuid="8d22f151-5504-4759-9f1f-6c7745ee0e88"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="13" width="50" height="12" uuid="3f9bcfd1-8184-444b-a8cc-dabbf81cbaf4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gross]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="113" y="13" width="36" height="12" uuid="d1f84a93-e1de-4380-b2d5-583ee9be68c6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="13" width="50" height="12" uuid="c42c45c9-7b11-4809-87aa-509757a0f7fa"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="27" width="202" height="1" uuid="9d30e017-c0cd-44d0-a062-b8d908a5ce82"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="2" width="13" height="10" uuid="aa3a577f-8deb-4928-ac1a-5b1ba955a33c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{LN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="2" width="58" height="10" uuid="8868f5ae-a04c-49d0-b858-365396509270">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="408a1cc7-868b-4594-a4f3-f4ba6d19ac4f"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Courier New" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="2" width="119" height="10" uuid="a2c59353-f2e1-4ab2-b5ba-662a96533350">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6541e66-4315-46f3-acfc-b933c0607dd9"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Courier New" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="42" y="12" width="19" height="10" uuid="81e3c105-708b-44c0-9aa9-d804451bf4db">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e97b57de-09f9-4f2c-b220-e8332d939613"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Courier New" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="12" width="35" height="10" uuid="658912f5-29aa-4dd5-96da-c85027dffa18">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aae61e3f-43f5-461b-9dcf-49e9afccef78"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Courier New" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_selling_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="12" width="50" height="10" uuid="0933dd4e-f516-4c35-9237-0d4b2a5ed001">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f695bd97-ec1d-481c-ac3a-c6141289a380"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Courier New" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_gross}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="113" y="12" width="36" height="10" uuid="5eb0adb6-7af2-4525-a466-5c0c8e1e5202">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3cd57d4c-5c42-4622-bc87-7f838f2bdf58"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Courier New" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_discount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="12" width="50" height="10" uuid="94682dd2-d25a-4d30-b266-004112307671">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c51bb9bd-4c61-41ed-904d-04d4e28062b0"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Courier New" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_net}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="3" width="67" height="10" uuid="8e09a2d3-062b-4729-853f-26c46f847076"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<text><![CDATA[Sub Total ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="13" width="67" height="10" uuid="d1562a0e-838a-42e2-b6e5-2d0caa84ba07"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<text><![CDATA[Discount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="27" width="85" height="14" uuid="a4984fc5-90a7-47a8-8c8a-54d4c6c0948d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NET AMOUNT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="71" width="202" height="1" uuid="44a4930d-279d-4f13-be83-92b0c0e75baa"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="202" height="1" uuid="7e9bc024-ce39-4e3d-a9e8-9d6033e11cef"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="24" width="202" height="1" uuid="a8f26545-a4f1-4aa1-820f-97c6989a843b"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="44" width="202" height="1" uuid="e249e250-1271-4da7-81cb-997e3c0ac0fc"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="120" y="3" width="81" height="10" uuid="a0042ed7-605d-4294-bb3a-50f863cd5786"/>
+				<textElement textAlignment="Right">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoice_gross}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="13" width="81" height="10" uuid="f2050778-0e85-4309-b14d-667a55b06f1c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoice_discount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="27" width="81" height="14" uuid="48a5659f-f77d-4d6e-856b-6117fe5dbb0c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Courier New" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoice_net}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="46" width="67" height="10" uuid="c38d3cc1-91c3-4829-8dca-8f927fd12d84"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<text><![CDATA[Pay Amount]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="46" width="81" height="10" uuid="392ce556-b2cf-4fcd-8ca7-643dca64a684"/>
+				<textElement textAlignment="Right">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoice_pay}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="57" width="67" height="10" uuid="d8701408-6794-4fa3-9d95-1e14d9fe9be1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<text><![CDATA[Exchange]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="57" width="81" height="10" uuid="624cd1c1-09e2-4666-9387-b9b7beeb0335"/>
+				<textElement textAlignment="Right">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoice_balance}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="202" height="10" uuid="28be9516-25c4-46c8-b661-7e897caa0e55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="5.0"/>
+				</textElement>
+				<text><![CDATA["THE FIRST WEALTH IS HEALTH"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="10" width="202" height="10" uuid="be473a37-5517-42ed-a636-2bff5041785f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<text><![CDATA[Thank You Come Again!]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="202" height="10" uuid="228f2eaf-c661-4f4b-9471-195c1055b596"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="7" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Software by ACCIO (PVT) LTD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="202" height="10" uuid="9add4b55-5fa6-4dd0-9019-f2bd3872c57d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="7"/>
+				</textElement>
+				<text><![CDATA[+94-70 209 7777 / www.accio.lk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="202" height="10" uuid="e493d497-5180-4232-aba0-fb0707bb518a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<text><![CDATA[*****]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
